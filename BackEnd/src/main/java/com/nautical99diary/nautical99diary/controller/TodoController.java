@@ -29,14 +29,12 @@ public class TodoController {
      * updateTodo: todo 내용 업데이트
      *
      * @param id
-     * @param goalDay
      * @param todoUpdate
      * @return UpdateDto.TodoUpdate
      */
     @PostMapping("/todo/{goalDay}/{id}")
     public UpdateDto.TodoUpdate updateTodo
-    (@PathVariable Long id, @PathVariable String goalDay, @RequestBody UpdateDto.TodoUpdate todoUpdate) {
-        // 컨트롤러에서 데이터 가공하는 게 맞을지?
+    (@PathVariable Long id, @RequestBody UpdateDto.TodoUpdate todoUpdate) {
         todoUpdate.setId(id);
         return todoService.updateTodo(todoUpdate);
     }
@@ -45,19 +43,17 @@ public class TodoController {
      * updateComplete: 완료 여부 업데이트
      *
      * @param id
-     * @param goalDay
-     * @param completetionUpdate
      * @return UpdateDto.CompletionUpdate
      */
     @PutMapping("/todo/{goalDay}/{id}")
     public UpdateDto.CompletionUpdate updateComplete
-    (@PathVariable Long id, @PathVariable String goalDay, @RequestBody UpdateDto.CompletionUpdate completetionUpdate) {
-        completetionUpdate.setId(id);
-        return todoService.updateComplete(completetionUpdate);
+    (@PathVariable Long id, @RequestBody UpdateDto.CompletionUpdate completionUpdate) {
+        completionUpdate.setId(id);
+        return todoService.updateComplete(completionUpdate);
     }
 
     @DeleteMapping("/todo/{goalDay}/{id}")
-    public void deleteTodo(@PathVariable Long id, @PathVariable String goalDay) {
+    public void deleteTodo(@PathVariable Long id) {
         todoService.deleteTodo(id);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class TodoService {
 
     private final TodoRepository todoRepository;
-    private final TodoRepositoryEM repositoryJPQL;
+    private final TodoRepositoryEM repositoryEM;
     //private final TodoRepository todoRepository;
 
     public List<Todo> getTodo(String day) {
@@ -27,14 +27,14 @@ public class TodoService {
     }
 
     public UpdateDto.TodoUpdate updateTodo(UpdateDto.TodoUpdate requestDto) {
-        return repositoryJPQL.updateTodo(requestDto);
+        return repositoryEM.updateTodo(requestDto);
     }
 
     public UpdateDto.CompletionUpdate updateComplete(UpdateDto.CompletionUpdate requestDto) {
-        return repositoryJPQL.updateComplete(requestDto);
+        return repositoryEM.updateComplete(requestDto);
     }
 
     public void deleteTodo(Long id) {
-        repositoryJPQL.deleteTodo(id);
+        repositoryEM.deleteTodo(id);
     }
 }
