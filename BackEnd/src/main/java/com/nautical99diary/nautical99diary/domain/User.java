@@ -1,9 +1,8 @@
 package com.nautical99diary.nautical99diary.domain;
 
 import com.nautical99diary.nautical99diary.domain.resultType.Timestamped;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.nautical99diary.nautical99diary.dto.UserRequestDto;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class User extends Timestamped {
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
@@ -25,4 +25,9 @@ public class User extends Timestamped {
     @Column(nullable = false, unique = true)
     private String nickname;
 
+    public User(UserRequestDto userRequestDto) {
+        this.username = userRequestDto.getUsername();
+        this.nickname = userRequestDto.getNickname();
+        this.password = userRequestDto.getPassword();
+    }
 }
