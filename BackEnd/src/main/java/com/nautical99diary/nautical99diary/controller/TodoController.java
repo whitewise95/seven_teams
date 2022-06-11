@@ -22,7 +22,6 @@ public class TodoController {
     @PostMapping("/todo/{goalDay}")
     public Todo createTodo(@PathVariable String goalDay, @RequestBody TodoRequestDto todoRequestDto) {
         return todoService.createTodo(goalDay, todoRequestDto);
-
     }
 
     /**

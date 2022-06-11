@@ -18,10 +18,11 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    public class SecurityConfiguration{
+    public static class SecurityConfiguration{
 
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+            http.csrf().disable();
             http
                     .authorizeHttpRequests((authz) -> {
                                 try {
@@ -29,6 +30,7 @@ public class SecurityConfig {
                                             .antMatchers("/user/signup").permitAll()
                                             .antMatchers("/user/idCheck/**").permitAll()
                                             .antMatchers("/user/nicknameCheck/**").permitAll()
+                                            .antMatchers("/loginForm").permitAll()
                                             .anyRequest().authenticated()
                                         .and()
                                             .formLogin()
@@ -46,5 +48,11 @@ public class SecurityConfig {
 
             return http.build();
         }
+
+//        @Bean
+//        public void staticConfigure(WebSecurity web) throws Exception{
+//            web.ignoring().antMatchers("/resources/**");
+//        }
+
     }
 }

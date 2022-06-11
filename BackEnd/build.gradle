@@ -39,6 +39,9 @@ dependencies {
 
     //security
     implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Thymeleaf (뷰 템플릿 엔진)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
 tasks.named('test') {
