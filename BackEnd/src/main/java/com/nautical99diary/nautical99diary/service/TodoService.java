@@ -1,7 +1,7 @@
 package com.nautical99diary.nautical99diary.service;
 
+import com.nautical99diary.nautical99diary.config.auth.PrincipalDetails;
 import com.nautical99diary.nautical99diary.domain.Todo;
-import com.nautical99diary.nautical99diary.domain.UserDetailsImpl;
 import com.nautical99diary.nautical99diary.dto.*;
 import com.nautical99diary.nautical99diary.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +16,12 @@ public class TodoService {
     private final TodoRepository todoRepository;
     private final TodoRepositoryEM repositoryJPQL;
 
-    public List<Todo> getTodo(String day,UserDetailsImpl userDetails) {
+    public List<Todo> getTodo(String day, PrincipalDetails userDetails) {
         Long userId = userDetails.getUser().getId();
         return todoRepository.findAllByGoalDayAndUserID(day,userId);
     }
 
-    public Todo createTodo(String day, TodoRequestDto todoRequestDto, UserDetailsImpl userDetails) {
+    public Todo createTodo(String day, TodoRequestDto todoRequestDto, PrincipalDetails userDetails) {
         Todo todo = new Todo(day, todoRequestDto,userDetails);
         todoRepository.save(todo);
         return todo;

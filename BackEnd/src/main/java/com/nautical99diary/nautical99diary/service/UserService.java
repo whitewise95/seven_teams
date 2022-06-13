@@ -4,6 +4,7 @@ import com.nautical99diary.nautical99diary.domain.User;
 import com.nautical99diary.nautical99diary.dto.UserRequestDto;
 import com.nautical99diary.nautical99diary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

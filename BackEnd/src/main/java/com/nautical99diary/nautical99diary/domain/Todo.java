@@ -1,5 +1,6 @@
 package com.nautical99diary.nautical99diary.domain;
 
+import com.nautical99diary.nautical99diary.config.auth.PrincipalDetails;
 import com.nautical99diary.nautical99diary.domain.resultType.Timestamped;
 import com.nautical99diary.nautical99diary.dto.TodoRequestDto;
 import lombok.*;
@@ -28,7 +29,7 @@ public class Todo extends Timestamped {
     @Column(nullable = false)
     private Long userID;
 
-    public Todo(String day,TodoRequestDto todoRequestDto,UserDetailsImpl userDetails) {
+    public Todo(String day, TodoRequestDto todoRequestDto, PrincipalDetails userDetails) {
         this.goalDay = day;
         this.todo = todoRequestDto.getTodo();
         this.checkComplete = todoRequestDto.isCheckComplete();
