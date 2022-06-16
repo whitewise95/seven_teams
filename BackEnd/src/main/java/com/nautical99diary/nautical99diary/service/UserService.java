@@ -17,7 +17,7 @@ public class UserService {
 
     @Transactional
     public boolean saveUser(UserRequestDto userRequestDto) {
-        singUpValid(userRequestDto);
+        signUpValid(userRequestDto);
         return userRepository.findById(
                 userRepository.save(
                         new User(
@@ -42,7 +42,7 @@ public class UserService {
         }
     }
 
-    public void singUpValid(UserRequestDto userRequestDto) {
+    public void signUpValid(UserRequestDto userRequestDto) {
         if (!userRequestDto.getPassword().equals(userRequestDto.getPasswordCheck())) {
             throw new IllegalArgumentException("비밀번호와 재확인 비밀번호가 맞지 않습니다.");
         }
